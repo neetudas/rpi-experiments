@@ -1,0 +1,29 @@
+#!/usr/bin/python
+
+import RPi.GPIO as GPIO
+GPIO.cleanup() 
+
+import time
+
+# blinking function
+def blink(pin):
+        GPIO.output(pin,GPIO.HIGH)
+        time.sleep(.1)
+        GPIO.output(pin,GPIO.LOW)
+        time.sleep(.1)
+        return
+
+# to use Raspberry Pi board pin numbers
+GPIO.setmode(GPIO.BOARD)
+
+# set up GPIO output channel
+GPIO.setup(11, GPIO.OUT)
+GPIO.setup(12, GPIO.OUT)
+GPIO.setup(15, GPIO.OUT)
+
+for i in range(0,50):
+        blink(11)
+        blink(12)
+        blink(15)
+
+GPIO.cleanup()
